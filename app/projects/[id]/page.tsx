@@ -231,12 +231,12 @@ export default function ProjectDetailPage() {
                     Demo Mode
                   </label>
                   <span className="text-xs text-gray-500">
-                    {demoMode ? 'Hard filters only' : 'Full AI analysis'}
+                    {demoMode ? 'Demo AI analysis' : 'Full AI analysis'}
                   </span>
                 </div>
                 <Button
                   onClick={handleRunStaffingAgent}
-                  disabled={isLoading}
+                  disabled={isLoading || !demoMode}
                   size="lg"
                   className="w-full md:w-auto"
                 >
@@ -248,7 +248,7 @@ export default function ProjectDetailPage() {
                   ) : (
                     <>
                       <CheckCircle2 className="w-4 h-4 mr-2" />
-                      Run Staffing Agent
+                      Run
                     </>
                   )}
                 </Button>
