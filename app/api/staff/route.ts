@@ -1,7 +1,7 @@
 import { EMPLOYEES } from "@/data/employees";
 import { PROJECTS } from "@/data/projects";
 import { runStaffingEngine } from "@/lib/match";
-import { getStaffingRecommendation } from "@/lib/agent";
+// import { getStaffingRecommendation } from "@/lib/agent";
 
 export async function POST(request: Request) {
   try {
@@ -43,11 +43,24 @@ export async function POST(request: Request) {
       });
     }
 
+    //uncomment this when AI service is integrated
     // Get AI recommendation
-    const recommendation = await getStaffingRecommendation(
-      project,
-      shortlistedCandidates
-    );
+    // const recommendation = await getStaffingRecommendation(
+    //   project,
+    //   shortlistedCandidates
+    // );
+
+
+  // Temporary: Mock AI recommendation until AI service is integrated
+    const recommendation = {
+      selectedId: shortlistedCandidates[0].id,
+      selectedName: shortlistedCandidates[0].name,
+      reasoning: `Based on the analysis of the project requirements and candidate profiles, ${shortlistedCandidates[0].name} (CL ${shortlistedCandidates[0].CL}) is recommended due to their strong skills match and high performance rating.`,
+      confidence: 'high',
+      topicsToBrushUp: Object.entries(project.skillsNeeded).map(([skill]) => `Advanced ${skill}`),
+      knowledgeTransferUrl: "https://docs.example.com/knowledge-transfer"
+    }
+    
 
     return Response.json({
       success: true,
