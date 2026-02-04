@@ -33,27 +33,35 @@ export default function Dashboard() {
         <div className="bg-white border-b border-gray-200 px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Staff Intelligence</h1>
+              <h1 className="text-3xl font-bold text-gray-900">
+                Staff AGI
+              </h1>
               <p className="text-sm text-gray-600 mt-1">
                 AI-powered employee staffing for project matching
               </p>
             </div>
-            <div className="flex items-center gap-3">
-              <Button
-                onClick={() => router.push('/employees')}
-                variant="outline"
-                className="flex items-center gap-2"
-              >
-                <Users className="w-4 h-4" />
-                View Employees
-              </Button>
-              <Button
+            <div className="w-[50%] flex flex-col items-end">
+              <div className="flex items-center gap-3">
+                <Button
+                  onClick={() => router.push("/employees")}
+                  variant="outline"
+                  className="flex items-center gap-2"
+                >
+                  <Users className="w-4 h-4" />
+                  View Employees
+                </Button>
+
+                {/* <Button
                 onClick={() => router.push('/staff-pilot')}
                 className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
               >
                 <MessageSquare className="w-4 h-4" />
                 Staff Pilot
-              </Button>
+              </Button> */}
+              </div>
+              <p className="text-sm text-gray-600 mt-1">
+                by piyush 
+              </p>
             </div>
           </div>
         </div>
@@ -76,11 +84,19 @@ export default function Dashboard() {
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
-                        <CardTitle className="text-lg">{project.role}</CardTitle>
-                        <p className="text-xs text-gray-500 mt-1">{project.projectId}</p>
+                        <CardTitle className="text-lg">
+                          {project.role}
+                        </CardTitle>
+                        <p className="text-xs text-gray-500 mt-1">
+                          {project.projectId}
+                        </p>
                       </div>
-                      <Badge variant={project.remoteAllowed ? 'default' : 'secondary'}>
-                        {project.remoteAllowed ? 'Remote' : 'On-site'}
+                      <Badge
+                        variant={
+                          project.remoteAllowed ? "default" : "secondary"
+                        }
+                      >
+                        {project.remoteAllowed ? "Remote" : "On-site"}
                       </Badge>
                     </div>
                   </CardHeader>
@@ -89,12 +105,14 @@ export default function Dashboard() {
                       <div className="flex items-center gap-2">
                         <Badge variant="outline">CL {project.requiredCL}</Badge>
                         <span className="text-gray-600 text-xs">
-                          {CL_LABELS[project.requiredCL]?.split('/')[0].trim()}
+                          {CL_LABELS[project.requiredCL]?.split("/")[0].trim()}
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Clock className="w-4 h-4 text-gray-500" />
-                        <span className="text-gray-600">{project.requiredHours}h</span>
+                        <span className="text-gray-600">
+                          {project.requiredHours}h
+                        </span>
                       </div>
                     </div>
 
@@ -109,7 +127,11 @@ export default function Dashboard() {
                       {Object.entries(project.skillsNeeded)
                         .slice(0, 3)
                         .map(([skill]) => (
-                          <Badge key={skill} variant="outline" className="text-xs">
+                          <Badge
+                            key={skill}
+                            variant="outline"
+                            className="text-xs"
+                          >
                             {skill}
                           </Badge>
                         ))}
@@ -135,5 +157,5 @@ export default function Dashboard() {
         </div>
       </div>
     </main>
-  )
+  );
 }

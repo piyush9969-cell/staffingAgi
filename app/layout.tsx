@@ -10,7 +10,6 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: 'Staff Intelligence - AI Staffing Dashboard',
   description: 'AI-powered employee staffing and project matching platform. Use intelligent algorithms and ChatGPT to match employees with projects based on skills and availability.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
